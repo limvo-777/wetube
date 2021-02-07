@@ -4,7 +4,8 @@ import {
     userDetail,
     editProfile,
     changePassword
-  } from "../controllers/userController";
+   } from "../controllers/userController";
+   
 const userRouter = express.Router();
 
 // userRouter.get(routes.home,home);
