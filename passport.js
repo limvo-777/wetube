@@ -1,7 +1,11 @@
 import passport from "passport";
 import User from "./models/User";
 import GithubStrategy from "passport-github";
-import { githubLoginCallback } from "./controllers/userController";
+import {
+  githubLoginCallback,
+  googleLoginCallback,
+} from "./controllers/userController";
+var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 import routes from "./routes";
 import dotenv from "dotenv";
 dotenv.config();
@@ -17,6 +21,18 @@ passport.use(
     githubLoginCallback
   )
 );
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GG_ID,
+      clientSecret: process.env.GG_SECRET,
+      callbackURL: `http://localhost:4000${routes.googleCallback}`,
+    },
+    googleLoginCallback
+  )
+);
+
 passport.serializeUser(function (user, done) {
   done(null, user);
 });

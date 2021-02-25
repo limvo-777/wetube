@@ -65,6 +65,37 @@ export const postGithubLogin = (req, res) => {
   res.redirect(routes.home);
 };
 
+// GOOGLE
+export const googleLogin = passport.authenticate("google", {
+  scope: ["https://www.googleapis.com/auth/plus.login"],
+});
+
+export const googleLoginCallback = async (_, __, profile, done) => {
+  const {
+    _json: { id, avatar_url: picture, name, email },
+  } = profile;
+  try {
+    const user = await User.findOne({ name });
+    if (user) {
+      user.googleId = id;
+      user.save();
+      return done(null, user);
+    }
+    const newUser = await User.create({
+      name,
+      googleId: id,
+      avatarUrl,
+    });
+    return cb(null, newUser);
+  } catch (error) {
+    return done(error);
+  }
+};
+
+export const postGoogleLogin = (req, res) => {
+  res.redirect(routes.home);
+};
+
 export const logout = (req, res) => {
   // To Do: Process Log Out
   req.logout();
