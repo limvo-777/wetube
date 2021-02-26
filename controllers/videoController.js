@@ -119,6 +119,28 @@ export const deleteVideo = async (req, res) => {
   res.render("deleteVideo", { pageTitle: "Delete Video" });
 };
 
+//Delete Comment
+export const deleteComment = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  console.log(id);
+  try {
+    const comment = await Comment.findById(id);
+    console.log(comment);
+    console.log(req.user._id);
+    if (String(comment.creator) !== String(req.user._id)) {
+      throw Error();
+    } else {
+      await Comment.findOneAndRemove({ _id: id });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+
+  res.render("deleteVideo", { pageTitle: "Delete Comment" });
+};
+
 //Register Video View
 export const postRegisterView = async (req, res) => {
   const {

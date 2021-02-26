@@ -37,5 +37,5 @@ block content
                         span=comment.text 
                     if loggedUser && String(comment.creator._id) == String(loggedUser._id)
                         span
-                            a(href)
+                            a(href=routes.deleteComment(comment._id))
                                 button ❌
