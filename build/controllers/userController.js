@@ -44,7 +44,7 @@ var postJoin = /*#__PURE__*/function () {
             res.render("join", {
               pageTitle: "Join"
             });
-            _context.next = 17;
+            _context.next = 18;
             break;
 
           case 6:
@@ -61,20 +61,21 @@ var postJoin = /*#__PURE__*/function () {
             return _User["default"].register(user, password);
 
           case 12:
-            _context.next = 17;
+            next();
+            _context.next = 18;
             break;
 
-          case 14:
-            _context.prev = 14;
+          case 15:
+            _context.prev = 15;
             _context.t0 = _context["catch"](6);
             res.redirect(_routes["default"].home);
 
-          case 17:
+          case 18:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[6, 14]]);
+    }, _callee, null, [[6, 15]]);
   }));
 
   return function postJoin(_x, _x2, _x3) {
