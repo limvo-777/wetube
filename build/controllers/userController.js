@@ -321,30 +321,33 @@ var postEditProfile = /*#__PURE__*/function () {
         switch (_context5.prev = _context5.next) {
           case 0:
             _req$body2 = req.body, name = _req$body2.name, email = _req$body2.email, file = req.file;
-            _context5.prev = 1;
-            _context5.next = 4;
+            console.log(file);
+            console.log(file.location);
+            console.log(String(file.location));
+            _context5.prev = 4;
+            _context5.next = 7;
             return _User["default"].findByIdAndUpdate(req.user._id, {
               name: name,
               email: email,
-              avatarUrl: file ? "/".concat(file.loacation) : req.user.avatarUrl
+              avatarUrl: file ? String(file.location) : req.user.avatarUrl
             });
 
-          case 4:
+          case 7:
             res.redirect(_routes["default"].me);
-            _context5.next = 10;
+            _context5.next = 13;
             break;
 
-          case 7:
-            _context5.prev = 7;
-            _context5.t0 = _context5["catch"](1);
+          case 10:
+            _context5.prev = 10;
+            _context5.t0 = _context5["catch"](4);
             res.redirect(_routes["default"].editProfile);
 
-          case 10:
+          case 13:
           case "end":
             return _context5.stop();
         }
       }
-    }, _callee5, null, [[1, 7]]);
+    }, _callee5, null, [[4, 10]]);
   }));
 
   return function postEditProfile(_x14, _x15) {

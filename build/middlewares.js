@@ -28,14 +28,14 @@ var multerVideo = (0, _multer["default"])({
   storage: (0, _multerS["default"])({
     s3: s3,
     acl: "public-read",
-    bucket: "wetube/video"
+    bucket: "2021wetube/video"
   })
 });
 var multerAvatar = (0, _multer["default"])({
   storage: (0, _multerS["default"])({
     s3: s3,
     acl: "public-read",
-    bucket: "wetube/avatar"
+    bucket: "2021wetube/avatar"
   })
 });
 var uploadVideo = multerVideo.single("videoFile");

@@ -15,14 +15,14 @@ const multerVideo = multer({
   storage: multerS3({
     s3,
     acl: "public-read",
-    bucket: "wetube/video",
+    bucket: "2021wetube/video",
   }),
 });
 const multerAvatar = multer({
   storage: multerS3({
     s3,
     acl: "public-read",
-    bucket: "wetube/avatar",
+    bucket: "2021wetube/avatar",
   }),
 });
 
